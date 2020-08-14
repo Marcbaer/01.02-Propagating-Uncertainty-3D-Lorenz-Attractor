@@ -7,4 +7,17 @@ Please check the [README_Lorenz_attractor File](README_Lorenz_attractor.docx) fo
 
 *01.02 3-D Lorenz Attractor*
 
-The predictive distributions of the GP-LSTM model are evaluated on the 3-Dimensional Lorenz Attracator.
+The predictive distributions of the GP-LSTM model are evaluated on the 3-Dimensional Lorenz Attractor.
+
+This attractor system was initially developed by Edward N. Lorenz as a simple
+model for atmospheric convection and dissipative hydrodynamic flows. The
+system exhibits chaotic behavior for certain parameter values.
+An attractor describes a collection of numerical values to which a dynamical
+system tends to evolve. The set of values can be a single point, a curve or a
+highly complex shape known as a strange attractor. For points near or within
+the attractor space, the values stay close even if disturbed. The points follow the
+trajectories of the attractor.
+The Lorenz attractor consists of a system of three differential equations describing
+the temperature and convection dynamics of a two dimensional fluid layer.
+
+<img src="https://render.githubusercontent.com/render/math?math= \frac{\partial x}{\partial t} \ = \sigma(y-x)">

@@ -12,20 +12,13 @@ import numpy as np
 import matplotlib
 from matplotlib import rcParams
 
-plt.style.use('default')
-SMALL_SIZE = 10
-matplotlib.rc('axes', titlesize=SMALL_SIZE)
-matplotlib.rc('font', size=SMALL_SIZE)
-plt.tick_params(labelsize=10)
-rcParams.update({'figure.autolayout': True})
-
 #read results from workstation:
 
-test=100
+test=1
 shift=1
 pred_mode=1
 
-results = pickle.load(open('./Results/L3d_final/results_lorenz3d_predmode'+str(pred_mode)+'_test_'+str(test)+'.p', 'rb'))
+results = pickle.load(open('./Results/results_lorenz3d_predmode'+str(pred_mode)+'_test_'+str(test)+'.p', 'rb'))
 
 y_test=results['y_test']
 y_pred=results['y_pred']
@@ -42,11 +35,20 @@ training_error=results['train_error']
 training_error=np.array(training_error)
 training_error=training_error
 
+#plot settings
+plt.style.use('default')
+SMALL_SIZE = 10
+matplotlib.rc('axes', titlesize=SMALL_SIZE)
+matplotlib.rc('font', size=SMALL_SIZE)
+plt.tick_params(labelsize=10)
+rcParams.update({'figure.autolayout': True})
+
 # n-step ahead prediction
 
-size=500
-point=2025
+size=200
+point=10
 J=np.arange(0,y_test[0,size:size+size].shape[0],1)
+
 plt.figure(figsize=(4,3))
 plt.title('Predicted mean vs. true target, n= '+str(shift)+', RMSE=%1.2f' % rmse_predict)
 plt.xlabel("#Test point")
@@ -82,8 +84,8 @@ i=len(k)
 v=np.array(var)  
 v=v[0,:,0]
 
-print('min_var: ',min(var))
-print('max_var:', max(var))  
+# print('min_var: ',min(var))
+# print('max_var:', max(var))  
   
 plt.figure(figsize=(4,3))
 plt.title('Variance estimates, n='+str(shift))

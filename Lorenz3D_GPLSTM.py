@@ -1,32 +1,20 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Oct 16 11:32:12 2018
-
-@author: marcbar
-"""
-from __future__ import print_function
 '''
 GP-LSTM regression on Lorenz3D data
 '''
-import matlab.engine
+
+from __future__ import print_function
 import numpy as np
 # Keras
 from keras.optimizers import Adagrad, Adam, SGD, RMSprop
 from keras.callbacks import EarlyStopping
-# Dataset interfaces
-from kgp.datasets.sysid import load_data
-from kgp.datasets.data_utils import data_to_seq, standardize_data
+
 # Model assembling and executing
 from kgp.utils.assemble import load_NN_configs, load_GP_configs, assemble
 from kgp.utils.experiment import train
 # Metrics & losses
 from kgp.losses import gen_gp_loss
 from kgp.metrics import root_mean_squared_error as RMSE
-from kgp.metrics import mean_squared_error as MSE
 import pickle
-import pandas as pd
-import matplotlib.pyplot as plt
 
 np.random.seed(42)
 
@@ -37,16 +25,11 @@ pred_mode=1
 def load_data_lorenz(shift,pred_mode):
     
     sequence_length=12
-    steps=1
     total_length=sequence_length+shift
-
-
     
-    data = pickle.load(open("./Data/training_data_Py2_T800.pickle", "rb"))
-    
-    data=data['train_input_sequence']
-      
-    data=data[:,:3]
+    data = pickle.load(open("./Data/training_data_Py2_T800.pickle", "rb"))    
+    data=data['train_input_sequence']      
+    data=data[:1500,:3]
 
     #create sequences with length sequence_length
     result = []
@@ -104,13 +87,11 @@ def load_data_lorenz(shift,pred_mode):
         y = data[set_name][1]
         y = y.reshape((-1, 1, np.prod(y.shape[1:])))
         data[set_name][1] = [y[:,:,i] for i in range(y.shape[2])]
-        
-          
+                  
     return data
 
 def main(shift,pred_mode):
     
-
     data=load_data_lorenz(shift,pred_mode)
     
     # Model & training parameters
@@ -119,10 +100,10 @@ def main(shift,pred_mode):
     nb_outputs = len(data['train'][1])
     gp_input_shape = (1,)
     batch_size = 500
-    epochs = 1000
+    epochs = 100
 
     nn_params = {
-        'H_dim': 128,
+        'H_dim': 24,
         'H_activation': 'tanh',
         'dropout': 0.0,
     }
@@ -152,7 +133,7 @@ def main(shift,pred_mode):
                                  params=gp_params)
 
     # Construct & compile the model
-    model = assemble('GP-LSTM', [nn_configs['1H'], gp_configs['MSGP']])
+    model = assemble('GP-LSTM', [nn_configs['1H'], gp_configs['GP']])
     loss = [gen_gp_loss(gp) for gp in model.output_layers]
     model.compile(optimizer=Adam(1e-5), loss=loss)
 
@@ -169,8 +150,7 @@ def main(shift,pred_mode):
                    batch_size=batch_size,
                    gp_n_iter=100,
                    verbose=0)
-    
-    
+      
     # Test the model
     X_test, y_test = data['test']
     X_train,y_train=data['train']
