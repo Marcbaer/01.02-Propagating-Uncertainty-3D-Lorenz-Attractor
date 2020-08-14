@@ -5,7 +5,7 @@ The GP-LSTM models are built using the keras-gp library (https://github.com/alsh
 
 Please check the [README_Lorenz_attractor File](README_Lorenz_attractor.docx) for detailed instructions on how to run the experiment.
 
-*01.02 3-D Lorenz Attractor*
+*01.02 3-Dimensional Lorenz Attractor*
 
 The predictive distributions of the GP-LSTM model are evaluated on the 3-Dimensional Lorenz Attractor.
 
@@ -37,3 +37,7 @@ Where:
 
 • σ, ρ, β: System parameter proportional to the Prandtl number, Rayleigh
 number and to physical dimensions of the fluid layer itself
+
+Applying the above described system of differential equations results in the plot below:
+
+<img src="./Figures/Lorenz3D.jpg" width="250" height="200" />
