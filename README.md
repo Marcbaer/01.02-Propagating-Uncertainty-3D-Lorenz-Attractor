@@ -27,9 +27,13 @@ the temperature and convection dynamics of a two dimensional fluid layer.
 
 <img src="https://render.githubusercontent.com/render/math?math=\frac{\partial z}{\partial t} \ = xy-\beta z">
 
-Where
+Where:
+
 • x proportional to the rate of convection
+
 • y proportional to the horizontal temperature variation
+
 • z proportional to the vertical temperature variation
+
 • σ, ρ, β: System parameter proportional to the Prandtl number, Rayleigh
 number and to physical dimensions of the fluid layer itself
