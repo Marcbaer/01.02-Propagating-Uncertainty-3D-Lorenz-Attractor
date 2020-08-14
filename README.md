@@ -5,7 +5,7 @@ The GP-LSTM models are built using the keras-gp library (https://github.com/alsh
 
 Please check the [README_Lorenz_attractor File](README_Lorenz_attractor.docx) for detailed instructions on how to run the experiment.
 
-*01.02 3-Dimensional Lorenz Attractor*
+*01.02 Three-Dimensional Lorenz Attractor*
 
 The predictive distributions of the GP-LSTM model are evaluated on the 3-Dimensional Lorenz Attractor.
 
