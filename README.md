@@ -21,3 +21,5 @@ The Lorenz attractor consists of a system of three differential equations descri
 the temperature and convection dynamics of a two dimensional fluid layer.
 
 <img src="https://render.githubusercontent.com/render/math?math= \frac{\partial x}{\partial t} \ = \sigma(y-x)">
+
+<img src="https://render.githubusercontent.com/render/math?math=\sigma^{2}=0.1">
