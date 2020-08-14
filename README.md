@@ -17,6 +17,7 @@ system tends to evolve. The set of values can be a single point, a curve or a
 highly complex shape known as a strange attractor. For points near or within
 the attractor space, the values stay close even if disturbed. The points follow the
 trajectories of the attractor.
+
 The Lorenz attractor consists of a system of three differential equations describing
 the temperature and convection dynamics of a two dimensional fluid layer.
 
@@ -25,3 +26,10 @@ the temperature and convection dynamics of a two dimensional fluid layer.
 <img src="https://render.githubusercontent.com/render/math?math=\frac{\partial y}{\partial t} \ = x(\rho-z)-y">
 
 <img src="https://render.githubusercontent.com/render/math?math=\frac{\partial z}{\partial t} \ = xy-\beta z">
+
+Where
+• x proportional to the rate of convection
+• y proportional to the horizontal temperature variation
+• z proportional to the vertical temperature variation
+• σ, ρ, β: System parameter proportional to the Prandtl number, Rayleigh
+number and to physical dimensions of the fluid layer itself
