@@ -41,3 +41,6 @@ number and to physical dimensions of the fluid layer itself
 Applying the above described system of differential equations results in the plot below:
 
 <img src="./Figures/Lorenz3D.jpg">
+
+The system of differential equations is deterministic with no stochastic behaviour, so we would expect very low predictive uncertainties from the GP-LSTM model and accurate mean predictions.
+
