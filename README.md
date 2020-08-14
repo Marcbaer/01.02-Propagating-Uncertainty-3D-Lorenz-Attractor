@@ -42,5 +42,17 @@ Applying the above described system of differential equations results in the plo
 
 <img src="./Figures/Lorenz3D.jpg">
 
-The system of differential equations is deterministic with no stochastic behaviour, so we would expect very low predictive uncertainties from the GP-LSTM model and accurate mean predictions.
+The system of differential equations is deterministic with no stochastic behaviour, so we would expect very low predictive uncertainties from the GP-LSTM model and accurate mean predictions if the full input space is used as input.
 
+The influence of a reduced input space
+on the GP-LSTM predictive distribution is investigated by using a 1- and 3- dimensional input. The convection rate x is forecasted using only the information of the x-dimensionand the full available space of all three dimensions x-y-z.
+The propagation algorithm is utilized to propagated the GP-LSTM predictive
+distribution for the convection rate x over 10 time steps. The Figure below shows the
+variance evolution using a one and three dimensional input space. 
+
+<img src="./Figures/L3d_variance_inputmodes.jpg">
+
+Propagating the one-dimensional input space predictions results in less confident distributions compared to the model that uses the full input space.
+Hence, the lack of information about the vertical and
+horizontal temperature variation represent an additional source of uncertainty
+that is taken into account by the GP-LSTM.
