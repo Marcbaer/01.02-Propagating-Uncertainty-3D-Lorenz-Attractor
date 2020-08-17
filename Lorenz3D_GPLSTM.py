@@ -18,12 +18,27 @@ import pickle
 
 np.random.seed(42)
 
+#Training and Experiment Parameters
 shift=1
 test=1
 pred_mode=1
 
 def load_data_lorenz(shift,pred_mode):
+    '''
+    Load Lorenz Attractor data and split into train, test and validation set.
     
+    Parameters
+    ----------
+    shift : Integer
+        Number of steps to be predicted into the future.
+    pred_mode : Integer
+        Mode (Dimension to be predicted).
+
+    Returns
+    -------
+    data : Dictionnary
+        Dictionnary containing the train, test and validation set.
+    '''
     sequence_length=12
     total_length=sequence_length+shift
     
@@ -91,7 +106,33 @@ def load_data_lorenz(shift,pred_mode):
     return data
 
 def main(shift,pred_mode):
+    '''
+    Define GP-LSTM Architecture and Training.
     
+    Parameters
+    ----------
+    shift : Integer
+        Number of steps to be predicted into the future.
+    pred_mode : Integer
+        Mode (Dimension) to be predicted into the future.
+
+    Returns
+    -------
+    history : Dictionnary
+        Training Information.
+    y_test : Numpy Array
+        Input Test Data.
+    y_pred : Numpy Array
+        Predicted output.
+    var : Numpy Array
+        Predicted Variances.
+    rmse_predict : Float
+        Training Metrics.
+    model : Optimized Model
+        Optimized Deep Learning Model after Training.
+    data : Dictionnary
+        Train, test and validation sets.
+    '''   
     data=load_data_lorenz(shift,pred_mode)
     
     # Model & training parameters

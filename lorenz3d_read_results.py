@@ -19,7 +19,9 @@ shift=1
 pred_mode=1
 
 results = pickle.load(open('./Results/results_lorenz3d_predmode'+str(pred_mode)+'_test_'+str(test)+'.p', 'rb'))
-
+train=results['data']['train']
+train=train[1][0]
+plt.plot(train)
 y_test=results['y_test']
 y_pred=results['y_pred']
 
@@ -45,7 +47,7 @@ rcParams.update({'figure.autolayout': True})
 
 # n-step ahead prediction
 
-size=200
+size=75
 point=10
 J=np.arange(0,y_test[0,size:size+size].shape[0],1)
 
