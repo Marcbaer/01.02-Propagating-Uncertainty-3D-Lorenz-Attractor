@@ -21,11 +21,11 @@ trajectories of the attractor.
 The Lorenz attractor consists of a system of three differential equations describing
 the temperature and convection dynamics of a two dimensional fluid layer.
 
-<img src="https://render.githubusercontent.com/render/math?math=\frac{\partial x}{\partial t} \ = \sigma(y-x)">
+$\frac{\partial x}{\partial t} \ = \sigma(y-x)$
 
-<img src="https://render.githubusercontent.com/render/math?math=\frac{\partial y}{\partial t} \ = x(\rho-z)-y">
+$\frac{\partial y}{\partial t} \ = x(\rho-z)-y$
 
-<img src="https://render.githubusercontent.com/render/math?math=\frac{\partial z}{\partial t} \ = xy-\beta z">
+$\frac{\partial z}{\partial t} \ = xy-\beta z$
 
 Where:
 
